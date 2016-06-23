@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "SUGOS example project to invoke `say` command on remote MAC",
   "main": "lib",
+  "bin": "./bin/cli.js",
   "scripts": {
     "cloud": "./bin/cloud.js",
     "debug": "./ci/watch.js & DEBUG=sg:* ./bin/cloud.js",
