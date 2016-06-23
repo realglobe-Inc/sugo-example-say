@@ -17,6 +17,7 @@ import {
 } from 'sg-react-components'
 import co from 'co'
 import sugoTerminal from 'sugo-terminal'
+import sgHearing from 'sg-hearing'
 import {sleep} from 'apemansleep'
 import {EOL} from 'os'
 
@@ -48,7 +49,10 @@ const DynamicComponent = React.createClass({
       /** Hearing or not */
       hearing: false,
       /** Text heard */
-      heard: ''
+      heard: '',
+
+      recLangList: ['ja-JP', 'en-US'],
+      recLang: 'ja-JP'
     }
   },
 
@@ -56,7 +60,7 @@ const DynamicComponent = React.createClass({
     const s = this
     let { state, props } = s
     let { spots } = props
-    let { spotKey, pingAt, pongAt, voiceList, voice } = state
+    let { spotKey, pingAt, pongAt, voiceList, voice, recLang, recLangList } = state
     return (
       <div className='dynamic-component'>
         <ApSelectableArticle
@@ -117,6 +121,7 @@ const DynamicComponent = React.createClass({
                     </ApForm>
                   </div>
                   <div>
+                    <h5 className="say-form-legend"> By Text</h5>
                     <ApForm className='say-text-form'>
                       <ApText name='text'
                               rows={ 2 }
@@ -130,7 +135,14 @@ const DynamicComponent = React.createClass({
                         onTap={ () => s.submitText() }
                       > Send </ApButton>
                     </ApForm>
+                    <h5 className="say-form-legend"> By speech</h5>
                     <ApForm className='say-speech-form'>
+                      <ApSelect value={ recLang }
+                                options={ (recLangList || []).reduce((options, voice) => Object.assign(options, {[voice]: voice}), {}) }
+                                onChange={ (e) => s.setState({ recLang: e.target.value }) }
+                                name='recLang'
+                                placehodler='Lang to recognize'
+                      />
                       <SgMicrophone onTap={ s.toggleHearing }
                                     on={ state.hearing }
                       />
@@ -160,6 +172,7 @@ const DynamicComponent = React.createClass({
     s.terminal = sugoTerminal(`${protocol}//${host}/terminals`)
 
     s.syncVoices()
+
   },
 
   // --------------------
@@ -236,17 +249,8 @@ const DynamicComponent = React.createClass({
       }
       let spot = yield terminal.connect(spotKey)
       let shell = spot.shell()
-      console.log('Saying text...')
-
-      yield new Promise((resolve, reject) => {
-        shell.spawn('say', [ '-v', voice, text ]).then((speech) => {
-          speech.on('close', () => {
-            console.log('!!!close')
-            resolve()
-          })
-        }).catch(reject)
-      })
-
+      console.log('Speech text: ', text)
+      shell.spawn('say', [ '-v', voice, text ])
       yield spot.disconnect()
     })
   }

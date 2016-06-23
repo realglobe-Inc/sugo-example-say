@@ -24,3 +24,19 @@
   max-height: 180px !important;
 }
 
+.say-form-legend {
+  display: block;
+  font-size: 14px;
+  border-bottom: 1px solid #F0F0F0;
+  margin-top: 24px;
+  color: #888;
+}
+
+.say-speech-form {
+  display: flex;
+  align-items: center;
+}
+
+.say-speech-form .ap-select-label {
+  min-width: 0;
+}

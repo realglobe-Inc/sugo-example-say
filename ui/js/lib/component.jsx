@@ -29,6 +29,7 @@ import apemansleep from 'apemansleep'
 import co from 'co'
 import os from 'os'
 import sugoTerminal from 'sugo-terminal'
+import sgHearing from 'sg-hearing'
 import sugoObserver from 'sugo-observer'
 
 import {DEFAULT_SCRIPT, DEFAULT_HTML} from './snippets'
@@ -41,6 +42,7 @@ const RequirePool = {
   'sugo-terminal': sugoTerminal,
   'sugo-observer': sugoObserver,
   'sg-react-components': sgReactComponents,
+  'sg-hearing': sgHearing,
   'apeman-react-basic': apemanReactBasic
 }
 

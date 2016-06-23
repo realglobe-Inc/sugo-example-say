@@ -47,6 +47,7 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "sg-compiler": "^1.0.0",
+    "sg-hearing": "^1.0.0",
     "sg-react-components": "^1.2.7",
     "sugo-cloud": "^1.2.5",
     "sugo-endpoint-compile": "^1.0.1",
