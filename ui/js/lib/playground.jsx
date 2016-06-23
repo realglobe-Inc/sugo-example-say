@@ -51,8 +51,14 @@ const DynamicComponent = React.createClass({
       /** Text heard */
       heard: '',
 
-      recLangList: ['ja-JP', 'en-US'],
-      recLang: 'ja-JP'
+      recLangList: [ 'ja-JP', 'en-US' ],
+      recLang: 'ja-JP',
+      sentences: [
+        {
+          text: '',
+          isFinal: false
+        }
+      ]
     }
   },
 
@@ -60,7 +66,10 @@ const DynamicComponent = React.createClass({
     const s = this
     let { state, props } = s
     let { spots } = props
-    let { spotKey, pingAt, pongAt, voiceList, voice, recLang, recLangList } = state
+    let {
+      spotKey, pingAt, pongAt, voiceList, voice, recLang, recLangList,
+      sentences
+    } = state
     return (
       <div className='dynamic-component'>
         <ApSelectableArticle
@@ -146,6 +155,16 @@ const DynamicComponent = React.createClass({
                       <SgMicrophone onTap={ s.toggleHearing }
                                     on={ state.hearing }
                       />
+                      <div>
+                        {
+                          sentences && sentences.map((sentence, i) => {
+                            let className = sentence.isFinal ? 'sg-hearing-result-final' : 'sg-hearing-result-not-final'
+                            return (
+                              <div key={ i } className={className}>{ sentence.text }</div>
+                            )
+                          })
+                        }
+                      </div>
                     </ApForm>
                   </div>
                 </div>
@@ -156,6 +175,8 @@ const DynamicComponent = React.createClass({
                 </div>
               </ApContainer>
             </div>
+            <br/>
+            <br/>
           </ApSelectableArticle.Content>
         </ApSelectableArticle>
       </div>
@@ -231,9 +252,62 @@ const DynamicComponent = React.createClass({
   toggleHearing () {
     const s = this
     let { hearing } = s.state
-    s.setState({
-      hearing: !hearing
+    if (hearing) {
+      s.stopHearing()
+    } else {
+      s.startHearing()
+    }
+  },
+
+  startHearing () {
+    const s = this
+    let { recLang } = s.state
+    let ear = sgHearing(recLang)
+    ear.on('start', (e) => {
+      s.setState({ hearing: true })
     })
+    ear.on('end', (e) => {
+      s.setState({ hearing: false })
+    })
+    ear.on('result', (e) => {
+      let { results } = e
+      let lastResult = results[ results.length - 1 ]
+      let { isFinal } = lastResult
+      let text = lastResult[ 0 ].transcript
+
+      let sentences = (s.state.sentences || []).concat()
+      sentences[ sentences.length - 1 ] = { text, isFinal }
+      if (isFinal) {
+        for (let sentence of sentences) {
+          s.doSpeechText(sentence.text)
+        }
+        sentences = [ {
+          text: '',
+          isFinal: false
+        } ]
+        s.stopHearing()
+      }
+      s.setState({ sentences })
+    })
+
+    ear.on('error', (e) => {
+      console.error(e)
+      s.setState({
+        hearing: false
+      })
+    })
+    ear.start()
+    s.ear = ear
+  },
+
+  stopHearing () {
+    const s = this
+    let { ear } = s
+    if (ear) {
+      ear.stop()
+    }
+    s.setState({ hearing: false })
+    delete s.ear
   },
 
   doSpeechText (text) {
