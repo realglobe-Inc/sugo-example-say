@@ -58,9 +58,10 @@ Quick Start
 
 Deploy to the [Heroku][heroku_url] and play it!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/realglobe-Inc/sugo-example-say/tree/heroku)
 
 [heroku_url]: https://www.heroku.com/
+
 
 <!-- Section from "doc/guides/01.Quick Start.md.hbs" End -->
 
