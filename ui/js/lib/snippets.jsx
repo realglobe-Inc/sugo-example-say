@@ -16,6 +16,7 @@ exports.DEFAULT_HTML = `<!--
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/playground.css">
+  <link rel="stylesheet" href="css/say.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
   <script src="js/external.cc.js"></script>
@@ -38,7 +39,14 @@ require('babel-polyfill')
 
 import React, {PropTypes as types} from 'react'
 import ReactDOM from 'react-dom'
-import {ApBigButton, ApSelect, ApButton, ApText, ApSelectableArticle} from 'apeman-react-basic'
+import {
+  ApContainer,
+  ApBigButton, ApSelect, ApButton, ApText, ApSelectableArticle,
+  ApForm
+} from 'apeman-react-basic'
+import {
+  SgMicrophone
+} from 'sg-react-components'
 import co from 'co'
 import sugoTerminal from 'sugo-terminal'
 import {sleep} from 'apemansleep'
@@ -68,7 +76,11 @@ const DynamicComponent = React.createClass({
       /** Selected voice */
       voice: null,
       /** Test to send */
-      text: ''
+      text: '',
+      /** Hearing or not */
+      hearing: false,
+      /** Text heard */
+      heard: ''
     }
   },
 
@@ -89,68 +101,80 @@ const DynamicComponent = React.createClass({
         >
           <ApSelectableArticle.Content contentFor={ String(spotKey) }>
             <div className='playground-row'>
-              <div className='playground-item'>
-                <p>Send a ping and receive pong.</p>
-              </div>
-              <div className='playground-item'>
-                <ApBigButton
-                  onTap={ () => s.withTerminal(function * sendPing (terminal) {
-                    if (s.state.pongAt) {
-                      // Reset to send ping
-                      s.setState({pingAt: null, pongAt: null})
-                      return
-                    }
+              <ApContainer>
+                <div className='playground-item'>
+                  <p>Send a ping and receive pong.</p>
+                </div>
+                <div className='playground-item'>
+                  <ApBigButton
+                    onTap={ () => s.withTerminal(function * sendPing (terminal) {
+                      if (s.state.pongAt) {
+                        // Reset to send ping
+                        s.setState({pingAt: null, pongAt: null})
+                        return
+                      }
 
-                    // Set up
-                    let spot = yield terminal.connect(spotKey)
-                    let noop = spot.noop()
+                      // Set up
+                      let spot = yield terminal.connect(spotKey)
+                      let noop = spot.noop()
 
-                    // Do ping-pong
-                    console.log('Send ping to noop...')
-                    s.setState({pingAt: new Date().toLocaleTimeString()})
-                    let pong = yield noop.ping()
-                    s.setState({pongAt: new Date().toLocaleTimeString()})
-                    console.log(${'`'}...received ping from noop: "${'${'}pong${'}'}"${'`'})
+                      // Do ping-pong
+                      console.log('Send ping to noop...')
+                      s.setState({pingAt: new Date().toLocaleTimeString()})
+                      let pong = yield noop.ping()
+                      s.setState({pongAt: new Date().toLocaleTimeString()})
+                      console.log(${'`'}...received ping from noop: "${'${'}pong${'}'}"${'`'})
 
-                    // Tear down
-                    yield spot.disconnect()
-                    yield sleep(10)
-                }) }
-                  spinning={ pingAt && !pongAt }
-                  primary={ !pingAt }
-                >{ pongAt ? ${'`'}Pong at ${'${'}pongAt${'}'}${'`'} : (pingAt ? 'Waiting...' : 'Send ping')} </ApBigButton>
-              </div>
+                      // Tear down
+                      yield spot.disconnect()
+                      yield sleep(10)
+                  }) }
+                    spinning={ pingAt && !pongAt }
+                    primary={ !pingAt }
+                  >{ pongAt ? ${'`'}Pong at ${'${'}pongAt${'}'}${'`'} : (pingAt ? 'Waiting...' : 'Send ping')} </ApBigButton>
+                </div>
+              </ApContainer>
             </div>
             <div className='playground-row'>
-              <div className='playground-item'>
-                <div>
-                  <ApSelect value={ voice }
-                            options={ (voiceList || []).reduce((options, voice) => Object.assign(options, {[voice]: voice}), {}) }
-                            onChange={ (e) => s.setState({ voice: e.target.value }) }
-                            name='voice'
-                            placehodler='Value of voice'
-                  />
+              <ApContainer>
+                <div className='playground-item'>
+                  <div>
+                    <ApForm className='say-voice-form'>
+                      <ApSelect value={ voice }
+                                options={ (voiceList || []).reduce((options, voice) => Object.assign(options, {[voice]: voice}), {}) }
+                                onChange={ (e) => s.setState({ voice: e.target.value }) }
+                                name='voice'
+                                placehodler='Value of voice'
+                      />
+                    </ApForm>
+                  </div>
+                  <div>
+                    <ApForm className='say-text-form'>
+                      <ApText name='text'
+                              rows={ 2 }
+                              placehodler='Text to speech'
+                              value={ state.text }
+                              onKeyUp={ (e) => (e.keyCode === 13) && s.submitText() }
+                              onChange={ (e) => s.setState({ text: e.target.value }) }
+                      />
+                      <ApButton
+                        primary
+                        onTap={ () => s.submitText() }
+                      > Send </ApButton>
+                    </ApForm>
+                    <ApForm className='say-speech-form'>
+                      <SgMicrophone onTap={ s.toggleHearing }
+                                    on={ state.hearing }
+                      />
+                    </ApForm>
+                  </div>
                 </div>
-                <div>
-                  <ApText name='text'
-                          placehodler='Text to speech'
-                          value={ state.text }
-                          onChange={ (e) => s.setState({ text: e.target.value }) }
-                  />
-                  <ApButton
-                    onTap={ () => {
-                      let {text} = s.state
-                      s.setState({text: ''})
-                      s.sayText(text)
-                    } }
-                  > Send </ApButton>
+                <div className='playground-item'>
+                  <p>
+                    Invoke say command on the spot.
+                  </p>
                 </div>
-              </div>
-              <div className='playground-item'>
-                <p>
-                  Invoke say command on the spot
-                </p>
-              </div>
+              </ApContainer>
             </div>
           </ApSelectableArticle.Content>
         </ApSelectableArticle>
@@ -216,7 +240,22 @@ const DynamicComponent = React.createClass({
     })
   },
 
-  sayText (text) {
+  submitText () {
+    const s = this
+    let { text } = s.state
+    s.setState({ text: '' })
+    s.doSpeechText(text)
+  },
+
+  toggleHearing () {
+    const s = this
+    let { hearing } = s.state
+    s.setState({
+      hearing: !hearing
+    })
+  },
+
+  doSpeechText (text) {
     const s = this
     if (!text) {
       return
@@ -231,12 +270,13 @@ const DynamicComponent = React.createClass({
       let shell = spot.shell()
       console.log('Saying text...')
 
-      yield new Promise((resolve) => {
-        let speech = shell.spawn('say', [ '-v', voice, text ])
-        speech.on('close', () => {
-          console.log('!!!close')
-          resolve()
-        })
+      yield new Promise((resolve, reject) => {
+        shell.spawn('say', [ '-v', voice, text ]).then((speech) => {
+          speech.on('close', () => {
+            console.log('!!!close')
+            resolve()
+          })
+        }).catch(reject)
       })
 
       yield spot.disconnect()
