@@ -133,7 +133,7 @@ $ npm install sugo-example-say -g
 Then, rune the example terminal
 
 ```bash
-$ HOST=__hostname_of_your_cloud__ sugo-example-say terminal
+$ HOSTNAME=__hostname_of_your_cloud__ sugo-example-say terminal
 ```
 
 <!-- Section from "doc/guides/13.Use Terminal.md.hbs" End -->

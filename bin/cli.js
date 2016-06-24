@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * CLI of sugo-example-say
+ * CLI of sugo-demo-example
  */
 'use strict'
 
@@ -13,7 +13,9 @@ program
   .description(description)
 
 function run (script) {
-  execcli('node', [ script ])
+  execcli('node', [ script ], {
+    env: process.env
+  })
     .then(() => {
       process.exit(0)
     })
