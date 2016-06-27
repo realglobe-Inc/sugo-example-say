@@ -10,16 +10,17 @@ process.chdir(`${__dirname}/..`)
 
 const apeTasking = require('ape-tasking')
 const apeCompiling = require('ape-compiling')
-const filecopy = require('filecopy')
+const filelink = require('filelink')
 const co = require('co')
 const coz = require('coz')
+const expandglob = require('expandglob')
 const React = require('react')
 const { SgExampleStyle } = require('sugo-react-example')
 const { readFileAsync, writeFileAsync } = require('apemanfs')
 const { color } = require('../lib/configs')()
 
 apeTasking.runTasks('compile', [
-  // Generate markdowns, snppets...
+  // Generate markdowns, snippets...
   () => coz.render('ui/js/lib/.*.jsx.bud'),
   // JSX -> JS
   () => apeCompiling.compileReactJsx('*.jsx', {
@@ -40,7 +41,7 @@ apeTasking.runTasks('compile', [
     yield writeFileAsync(dest, compiled)
   }),
   // Copy external
-  () => filecopy(
+  () => filelink(
     require.resolve('apeman-asset-javascripts/dist/demo.external.cc.js'),
     'ui/js/external.cc.js'
   ),
@@ -50,5 +51,13 @@ apeTasking.runTasks('compile', [
       React.createElement(SgExampleStyle, { dominant: color })
     )
     yield writeFileAsync(`${__dirname}/../ui/css/theme.css`, style)
+  }),
+
+  // Generate scss
+  () => co(function * () {
+    let filenames = yield expandglob('ui/css/*.scss')
+    for (let filename of filenames) {
+      yield apeCompiling.compileScss(filename, filename.replace(/\.scss$/, '.css'))
+    }
   })
 ])

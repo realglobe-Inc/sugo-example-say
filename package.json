@@ -82,8 +82,8 @@
     "sugo-cloud": "^1.2.5"
   },
   "engines": {
-    "node": ">=6",
-    "npm": ">=3"
+    "node": ">=6.x",
+    "npm": ">=3.x"
   },
   "publishConfig": {
     "registry": "https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-local"
