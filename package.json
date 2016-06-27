@@ -1,6 +1,6 @@
 {
   "name": "sugo-example-say",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "SUGOS example project to invoke `say` command on remote MAC",
   "main": "lib",
   "bin": "./bin/cli.js",
@@ -50,6 +50,7 @@
     "sg-compiler": "^1.0.0",
     "sg-hearing": "^1.0.0",
     "sg-react-components": "^1.2.7",
+    "sugo-agent-compile": "^1.0.0",
     "sugo-cloud": "^1.2.8",
     "sugo-endpoint-compile": "^1.0.1",
     "sugo-interface-noop": "^1.0.1",
