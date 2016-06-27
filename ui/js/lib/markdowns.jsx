@@ -80,7 +80,7 @@ Install the CLI to machine which the use terminal.
 $ npm install sugo-example-say -g
 &#x60;&#x60;&#x60;
 
-Then, rune the example terminal
+Then, run the example terminal
 
 &#x60;&#x60;&#x60;bash
 $ HOSTNAME&#x3D;__hostname_of_your_cloud__ sugo-example-say terminal

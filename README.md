@@ -43,6 +43,11 @@ SUGOS example project to invoke `say` command on remote MAC
 <a name="overview"></a>
 
 
+[![favicon_url]][app_url]
+
+[app_url]: http://sugo-example-say.herokuapp.com
+[favicon_url]: http://realglobe-inc.github.io/sugo-example-say/images/favicon.svg
+
 
 <!-- Overview End -->
 
@@ -144,7 +149,7 @@ Install the CLI to machine which the use terminal.
 $ npm install sugo-example-say -g
 ```
 
-Then, rune the example terminal
+Then, run the example terminal
 
 ```bash
 $ HOSTNAME=__hostname_of_your_cloud__ sugo-example-say terminal
