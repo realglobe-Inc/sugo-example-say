@@ -50,6 +50,19 @@ SUGOS example project to invoke `say` command on remote MAC
 <!-- Sections Start -->
 <a name="sections"></a>
 
+<!-- Section from "doc/guides/00.Requirements.md.hbs" Start -->
+
+<a name="section-doc-guides-00-requirements-md"></a>
+Requirements
+-----
+
++ [Node.js ( >=6.x )][node_download_url]
+
+[node_download_url]: https://nodejs.org/en/download/
+
+
+<!-- Section from "doc/guides/00.Requirements.md.hbs" End -->
+
 <!-- Section from "doc/guides/01.Quick Start.md.hbs" Start -->
 
 <a name="section-doc-guides-01-quick-start-md"></a>
@@ -58,9 +71,10 @@ Quick Start
 
 Deploy to the [Heroku][heroku_url] and play it!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/realglobe-Inc/sugo-example-say/tree/heroku)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)][heroku_deploy_url]
 
 [heroku_url]: https://www.heroku.com/
+[heroku_deploy_url]: https://heroku.com/deploy?template=https://github.com/realglobe-Inc/sugo-example-say/tree/heroku
 
 
 <!-- Section from "doc/guides/01.Quick Start.md.hbs" End -->
@@ -78,7 +92,7 @@ How to
 <a name="section-doc-guides-11-setup-cloud-md"></a>
 ### Setup Cloud
 
-Install the CLI to your spot server
+Install the CLI
 
 ```bash
 $ npm install sugo-example-say -g
@@ -90,7 +104,7 @@ Then, start the server
 $ PORT=300 sugo-example-say cloud
 ```
 
-In the most of cases, you need to setup reverse-proxy (like [nginx][nginx_url]) to exports the server to outer world.
+In the most of cases, you need to setup reverse-proxy (like [nginx][nginx_url]) to exports the server to the outer world.
 
 [nginx_url]: https://www.nginx.com/
 

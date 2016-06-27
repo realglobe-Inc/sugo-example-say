@@ -8,15 +8,25 @@
 
 let restore = (text) => text.replace(/&#x60;/g, '`').replace(/&#x3D;/g, '=')
 
+/** Converted from "doc/guides/00.Requirements.md.hbs" */
+exports[ '00.Requirements' ] = restore(`Requirements
+-----
+
++ [Node.js ( &gt;&#x3D;6.x )][node_download_url]
+
+[node_download_url]: https://nodejs.org/en/download/
+`)
+
 /** Converted from "doc/guides/01.Quick Start.md.hbs" */
 exports[ '01.Quick Start' ] = restore(`Quick Start
 -----
 
 Deploy to the [Heroku][heroku_url] and play it!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template&#x3D;https://github.com/realglobe-Inc/sugo-example-say/tree/heroku)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)][heroku_deploy_url]
 
 [heroku_url]: https://www.heroku.com/
+[heroku_deploy_url]: https://heroku.com/deploy?template&#x3D;https://github.com//tree/heroku
 `)
 
 /** Converted from "doc/guides/10.How to.md.hbs" */
@@ -26,7 +36,7 @@ exports[ '10.How to' ] = restore(`How to
 /** Converted from "doc/guides/11.Setup Cloud.md.hbs" */
 exports[ '11.Setup Cloud' ] = restore(`### Setup Cloud
 
-Install the CLI to your spot server
+Install the CLI
 
 &#x60;&#x60;&#x60;bash
 $ npm install sugo-example-say -g
@@ -38,7 +48,7 @@ Then, start the server
 $ PORT&#x3D;300 sugo-example-say cloud
 &#x60;&#x60;&#x60;
 
-In the most of cases, you need to setup reverse-proxy (like [nginx][nginx_url]) to exports the server to outer world.
+In the most of cases, you need to setup reverse-proxy (like [nginx][nginx_url]) to exports the server to the outer world.
 
 [nginx_url]: https://www.nginx.com/
 `)

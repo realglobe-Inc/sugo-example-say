@@ -56,9 +56,9 @@ import {EOL} from 'os'
 
 /**
  * Dynamic component create from the online-editor
- * @class DynamicComponent
+ * @class Playground
  */
-const DynamicComponent = React.createClass({
+const Playground = React.createClass({
   // --------------------
   // Specs
   // --------------------
@@ -363,9 +363,10 @@ const DynamicComponent = React.createClass({
   }
 })
 
-let { spots } = window
-let container = document.getElementById('playground-root')
-let element = (<DynamicComponent spots={ spots || [] }/>)
-ReactDOM.render(element, container)
-`
+setTimeout(() => {
+  let { spots } = window
+  let container = document.getElementById('playground-root')
+  let element = (<Playground spots={ spots || [] }/>)
+  ReactDOM.render(element, container)
+}, 100) // Wait for DOM ready`
 

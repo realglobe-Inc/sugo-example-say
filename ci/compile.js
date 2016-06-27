@@ -43,7 +43,8 @@ apeTasking.runTasks('compile', [
   // Copy external
   () => filelink(
     require.resolve('apeman-asset-javascripts/dist/demo.external.cc.js'),
-    'ui/js/external.cc.js'
+    'ui/js/external.cc.js',
+    { force: true }
   ),
   // Generate theme css
   () => co(function * () {
@@ -53,7 +54,7 @@ apeTasking.runTasks('compile', [
     yield writeFileAsync(`${__dirname}/../ui/css/theme.css`, style)
   }),
 
-  // Generate scss
+  // Compile scss
   () => co(function * () {
     let filenames = yield expandglob('ui/css/*.scss')
     for (let filename of filenames) {
