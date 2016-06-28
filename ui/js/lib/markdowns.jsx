@@ -11,10 +11,35 @@ let restore = (text) => text.replace(/&#x60;/g, '`').replace(/&#x3D;/g, '=')
 /** Converted from "doc/guides/00.Requirements.md.hbs" */
 exports[ '00.Requirements' ] = restore(`Requirements
 -----
+&lt;a href&#x3D;&quot;http://www.apple.com/mac/&quot;&gt;
+  &lt;img src&#x3D;&quot;https://realglobe-inc.github.io/sugos-assets/images/mac-banner.svg&quot;
+       alt&#x3D;&quot;Mac&quot;
+       height&#x3D;&quot;&quot;
+       style&#x3D;&quot;height:px&quot;
+  /&gt;&lt;/a&gt;
+&lt;a href&#x3D;&quot;https://nodejs.org&quot;&gt;
+  &lt;img src&#x3D;&quot;https://realglobe-inc.github.io/sugos-assets/images/nodejs-banner.png&quot;
+       alt&#x3D;&quot;Node.js&quot;
+       height&#x3D;&quot;&quot;
+       style&#x3D;&quot;height:px&quot;
+  /&gt;&lt;/a&gt;
+&lt;a href&#x3D;&quot;https://docs.npmjs.com/&quot;&gt;
+  &lt;img src&#x3D;&quot;https://realglobe-inc.github.io/sugos-assets/images/npm-banner.png&quot;
+       alt&#x3D;&quot;NPM&quot;
+       height&#x3D;&quot;&quot;
+       style&#x3D;&quot;height:px&quot;
+  /&gt;&lt;/a&gt;
 
++ [MAC ( OS X )][mac_url]
 + [Node.js ( &gt;&#x3D;6.x )][node_download_url]
++ [npm ( &gt;&#x3D;3.x )][npm_url]
 
+This example uses &#x60;say&#x60; command of OSX, thus you need a mac.
+
+[mac_url]: http://www.apple.com/mac/
 [node_download_url]: https://nodejs.org/en/download/
+[npm_url]: https://docs.npmjs.com/
+
 `)
 
 /** Converted from "doc/guides/01.Quick Start.md.hbs" */

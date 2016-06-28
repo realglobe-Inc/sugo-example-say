@@ -5,14 +5,14 @@
   "main": "lib",
   "bin": "./bin/cli.js",
   "scripts": {
-    "cloud": "./bin/cloud.js",
-    "debug": "./ci/watch.js & DEBUG=sg:* ./bin/cloud.js",
-    "prepublish": "./ci/compile.js && ./ci/build.js",
-    "spot": "./bin/spot.js",
-    "start": "./bin/cloud.js",
-    "terminal": "./bin/terminal.js",
     "test": "./ci/test.js",
-    "ui": "./bin/ui.js"
+    "prepublish": "./ci/compile.js && ./ci/build.js",
+    "start": "./bin/cloud.js",
+    "cloud": "./bin/cloud.js",
+    "spot": "./bin/spot.js",
+    "terminal": "./bin/terminal.js",
+    "ui": "./bin/ui.js",
+    "debug": "./ci/watch.js & DEBUG=sg:* ./bin/cloud.js"
   },
   "repository": "realglobe-Inc/sugo-example-say",
   "keywords": [
@@ -52,26 +52,16 @@
     "sg-react-components": "^1.2.7",
     "sugo-agent-compile": "^1.0.0",
     "sugo-cloud": "^1.2.8",
-    "sugo-endpoint-compile": "^1.0.1",
+    "sugo-endpoint-compile": "^2.0.0",
     "sugo-interface-noop": "^1.0.1",
     "sugo-interface-shell": "^1.0.1",
-    "sugo-observer": "^1.0.3",
+    "sugo-observer": "^1.0.4",
     "sugo-react-example": "^1.1.24",
-    "sugo-spot": "^1.0.15",
-    "sugo-terminal": "^1.0.13"
+    "sugo-spot": "^1.0.16",
+    "sugo-terminal": "^1.0.14"
   },
   "devDependencies": {
-    "ape-compiling": "^4.3.2",
-    "ape-covering": "^3.0.3",
-    "ape-deploying": "^5.0.2",
-    "ape-formatting": "^1.0.0",
-    "ape-releasing": "^4.0.1",
-    "ape-reporting": "^3.0.1",
-    "ape-tasking": "^4.0.2",
-    "ape-testing": "^4.0.0",
-    "ape-tmpl": "^5.0.6",
-    "ape-updating": "^4.0.1",
-    "ape-watching": "^2.1.1",
+    "ape-tmpl": "^5.0.10",
     "apeman-asset-javascripts": "^3.1.19",
     "apemanfs": "^1.0.3",
     "apemanrequest": "^1.1.0",
@@ -82,7 +72,9 @@
     "filedel": "^2.0.1",
     "filelink": "^3.0.3",
     "injectmock": "^2.0.0",
-    "sugo-cloud": "^1.2.8"
+    "sugo-cloud": "^1.2.8",
+    "sugos-assets": "^1.1.5",
+    "sugos-ci": "^1.2.1"
   },
   "engines": {
     "node": ">=6.x",

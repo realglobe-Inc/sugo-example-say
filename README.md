@@ -60,10 +60,35 @@ SUGOS example project to invoke `say` command on remote MAC
 <a name="section-doc-guides-00-requirements-md"></a>
 Requirements
 -----
+<a href="http://www.apple.com/mac/">
+  <img src="https://realglobe-inc.github.io/sugos-assets/images/mac-banner.svg"
+       alt="Mac"
+       height="40"
+       style="height:40px"
+  /></a>
+<a href="https://nodejs.org">
+  <img src="https://realglobe-inc.github.io/sugos-assets/images/nodejs-banner.png"
+       alt="Node.js"
+       height="40"
+       style="height:40px"
+  /></a>
+<a href="https://docs.npmjs.com/">
+  <img src="https://realglobe-inc.github.io/sugos-assets/images/npm-banner.png"
+       alt="NPM"
+       height="40"
+       style="height:40px"
+  /></a>
 
++ [MAC ( OS X )][mac_url]
 + [Node.js ( >=6.x )][node_download_url]
++ [npm ( >=3.x )][npm_url]
 
+This example uses `say` command of OSX, thus you need a mac.
+
+[mac_url]: http://www.apple.com/mac/
 [node_download_url]: https://nodejs.org/en/download/
+[npm_url]: https://docs.npmjs.com/
+
 
 
 <!-- Section from "doc/guides/00.Requirements.md.hbs" End -->

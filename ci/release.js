@@ -8,15 +8,13 @@
 
 process.chdir(`${__dirname}/..`)
 
-const apeTasking = require('ape-tasking')
-const apeReleasing = require('ape-releasing')
+const { exampleRelease } = require('sugos-ci')
 
-apeTasking.runTasks('release', [
-  () => apeReleasing.releasePackage({
-    beforeRelease: [
-      './ci/build.js',
-      './ci/deploy.js',
-      './ci/test.js'
-    ]
-  })
-], true)
+exampleRelease({
+  beforeRelease: [
+    './ci/build.js',
+    './ci/ghpages.js',
+    './ci/heroku.js',
+    './ci/test.js'
+  ]
+})
