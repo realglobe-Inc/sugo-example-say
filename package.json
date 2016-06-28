@@ -1,6 +1,6 @@
 {
   "name": "sugo-example-say",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "SUGOS example project to invoke `say` command on remote MAC",
   "main": "lib",
   "bin": "./bin/cli.js",
@@ -74,7 +74,7 @@
     "injectmock": "^2.0.0",
     "sugo-cloud": "^1.2.8",
     "sugos-assets": "^1.1.5",
-    "sugos-ci": "^1.2.1"
+    "sugos-ci": "^1.2.3"
   },
   "engines": {
     "node": ">=6.x",
