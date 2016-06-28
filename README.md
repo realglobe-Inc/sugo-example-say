@@ -46,7 +46,7 @@ SUGOS example project to invoke `say` command on remote MAC
 [![favicon_url]][app_url]
 
 [app_url]: http://sugo-example-say.herokuapp.com
-[favicon_url]: http://realglobe-inc.github.io/sugo-example-say/images/favicon.svg
+[favicon_url]: http://realglobe-inc.github.io/sugo-example-say/images/favicon.png
 
 
 <!-- Overview End -->
