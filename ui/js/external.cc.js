@@ -1,1 +1,0 @@
-../../node_modules/apeman-asset-javascripts/dist/demo.external.cc.js
