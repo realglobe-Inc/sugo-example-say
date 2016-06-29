@@ -35,7 +35,7 @@ tmp
 .DS_Store
 
 ui/js/lib/*.js
-#ui/js/external.cc.js
-#ui/js/index.js
+ui/js/external.cc.js
+ui/js/index.js
 ui/css/*.css
 ui/css/*.css.map
