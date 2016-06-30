@@ -8,7 +8,7 @@ require('babel-polyfill')
 
 import React, {PropTypes as types} from 'react'
 
-import cloudAgent from 'sugo-cloud/lib/agent'
+import cloudAgent from 'sugo-cloud/agent'
 import compileAgent from 'sugo-agent-compile'
 
 import {
