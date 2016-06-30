@@ -70,7 +70,7 @@ $ npm install sugo-example-say -g
 Then, start the server
 
 &#x60;&#x60;&#x60;bash
-$ PORT&#x3D;300 sugo-example-say cloud
+$ PORT&#x3D;3000 sugo-example-say cloud
 &#x60;&#x60;&#x60;
 
 In the most of cases, you need to setup reverse-proxy (like [nginx][nginx_url]) to exports the server to the outer world.
@@ -91,7 +91,7 @@ $ npm install sugo-example-say -g
 Then, connect spot to the cloud
 
 &#x60;&#x60;&#x60;bash
-$ HOSTNAME&#x3D;__hostname_of_your_cloud__ SPOT_KEY&#x3D;__your_own_spot_name__ sugo-example-say spot
+$ HOSTNAME&#x3D;&quot;__hostname_of_your_cloud__&quot; SPOT_KEY&#x3D;&quot;__your_own_spot_name__&quot; sugo-example-say spot
 &#x60;&#x60;&#x60;
 `)
 
@@ -108,6 +108,6 @@ $ npm install sugo-example-say -g
 Then, run the example terminal
 
 &#x60;&#x60;&#x60;bash
-$ HOSTNAME&#x3D;__hostname_of_your_cloud__ sugo-example-say terminal
+$ HOSTNAME&#x3D;&quot;__hostname_of_your_cloud__&quot; sugo-example-say terminal
 &#x60;&#x60;&#x60;`)
 
