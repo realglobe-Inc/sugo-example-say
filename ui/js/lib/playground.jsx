@@ -220,17 +220,10 @@ const Playground = React.createClass({
       }
 
       let spot = yield terminal.connect(spotKey)
-      let shell = spot.shell()
+      let say = spot.say()
       console.log('Start sync voices...')
 
-      let listed = yield shell.exec('ls /System/Library/Speech/Voices')
-      let voiceList = listed.split(EOL)
-        .map((name) => String(name).trim())
-        .filter((name) => /\.SpeechVoice$/.test(name))
-        .map((name) => name
-          .replace(/\.SpeechVoice$/, '')
-          .replace(/Compact$/, '')
-        )
+      let voiceList = yield say.voices()
       s.setState({
         voiceList,
         voice: state.voice || 'Kyoko'
@@ -322,9 +315,9 @@ const Playground = React.createClass({
         return
       }
       let spot = yield terminal.connect(spotKey)
-      let shell = spot.shell()
+      let say = spot.say()
       console.log('Speech text: ', text)
-      shell.spawn('say', [ '-v', voice, text ])
+      say.say(text, { voice })
       yield spot.disconnect()
     })
   }
