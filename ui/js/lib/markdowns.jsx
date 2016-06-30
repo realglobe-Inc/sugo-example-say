@@ -91,7 +91,7 @@ $ npm install sugo-example-say -g
 Then, connect spot to the cloud
 
 &#x60;&#x60;&#x60;bash
-$ HOSTNAME&#x3D;&quot;__hostname_of_your_cloud__&quot; SPOT_KEY&#x3D;&quot;__your_own_spot_name__&quot; sugo-example-say spot
+$ HOSTNAME&#x3D;&quot;__your_host__&quot; SPOT_KEY&#x3D;&quot;__your_spot_name__&quot; sugo-example-say spot
 &#x60;&#x60;&#x60;
 `)
 
@@ -108,6 +108,6 @@ $ npm install sugo-example-say -g
 Then, run the example terminal
 
 &#x60;&#x60;&#x60;bash
-$ HOSTNAME&#x3D;&quot;__hostname_of_your_cloud__&quot; sugo-example-say terminal
+$ HOSTNAME&#x3D;&quot;__your_host__&quot; sugo-example-say terminal
 &#x60;&#x60;&#x60;`)
 

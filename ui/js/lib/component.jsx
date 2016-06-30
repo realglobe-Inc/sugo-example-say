@@ -216,7 +216,7 @@ const Component = React.createClass({
     const s = this
     let { location } = window
     return {
-      __hostname_of_your_cloud__: location && location.host
+      __your_host__: location && location.host
     }
   }
 })
