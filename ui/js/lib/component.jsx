@@ -12,7 +12,6 @@ import cloudAgent from 'sugo-cloud/agent'
 import fileAgent from 'sugo-agent-file'
 import compileAgent from 'sugo-agent-compile'
 
-
 import {
   SgExample,
   SgExampleHeader,
@@ -27,7 +26,7 @@ import {
 } from 'sugo-react-example'
 import sgReactComponents from 'sg-react-components'
 import apemanReactBasic from 'apeman-react-basic'
-import apemansleep from 'apemansleep'
+import apemansleep, {sleep} from 'apemansleep'
 import co from 'co'
 import os from 'os'
 import sugoTerminal from 'sugo-terminal'
@@ -153,7 +152,7 @@ const Component = React.createClass({
     s.compileAgent = compileAgent('/dynamic/compile')
     s.fileAgent = fileAgent('/dynamic/contents')
     s.cloudAgent = cloudAgent()
-    
+
     s.observer.start()
     s.refreshStatus()
     s.setTab(String(hash).replace(/^#/, '').toUpperCase())
@@ -183,7 +182,7 @@ const Component = React.createClass({
     s.setState({ html, script, globals })
     s.tryAsync('saving', co(function * () {
       const { fileAgent } = s
-      let name = 'playground'
+      let name = 'default'
       yield fileAgent.write(`${name}.html`, html)
       yield fileAgent.write(`${name}.jsx`, script)
     }))
