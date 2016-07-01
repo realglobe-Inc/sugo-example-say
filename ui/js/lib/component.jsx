@@ -68,12 +68,13 @@ const Component = React.createClass({
   getInitialState () {
     const s = this
     let { props } = s
-    const { port, hostname } = props
     return {
-      script: DEFAULT_SCRIPT,
       html: DEFAULT_HTML,
+      script: DEFAULT_SCRIPT,
       tab: 'DEMO',
+      content: 'default',
       playground: false,
+      reading: false,
       refreshing: false,
       tooltip: null,
       cloud: {},
@@ -103,7 +104,7 @@ const Component = React.createClass({
             runSpot={ () => s.setState({ tooltip: markdowns[ '12.Run Spot' ] }) }
             onTabChange={ (e) => s.setTab(e.tab) }/>
           <SgExampleBody hidden={ tab !== 'DEMO' }>
-            <SgExampleAbout pkg={pkg}/>
+            <SgExampleAbout pkg={ pkg }/>
             <SgExampleStatus spots={ spots }
                              terminals={ terminals }
                              cloud={ cloud }
@@ -116,6 +117,8 @@ const Component = React.createClass({
               pipeConsole={ true }
               closed={ !state.playground }
               onToggle={ s.togglePlayground }
+              defaultHtml={ DEFAULT_HTML }
+              defaultScript={ DEFAULT_SCRIPT }
             />
           </SgExampleBody>
           <SgExampleBody hidden={ tab !== 'GUIDES' }>
@@ -161,8 +164,6 @@ const Component = React.createClass({
   componentWillUnmount () {
     const s = this
     s.observer.stop()
-
-    clearTimeout(s._statusRefreshTimer)
   },
 
   // --------------------
@@ -178,13 +179,13 @@ const Component = React.createClass({
 
   handleChange (e) {
     const s = this
+    let { state } = s
     let { html, script, globals } = e.values
     s.setState({ html, script, globals })
     s.tryAsync('saving', co(function * () {
       const { fileAgent } = s
-      let name = 'default'
-      yield fileAgent.write(`${name}.html`, html)
-      yield fileAgent.write(`${name}.jsx`, script)
+      yield fileAgent.write(`${state.content}.html`, html)
+      yield fileAgent.write(`${state.content}.jsx`, script)
     }))
   },
 
@@ -213,9 +214,9 @@ const Component = React.createClass({
   tryAsync (name, promise, delay = 300) {
     const s = this
     if (s.state[ name ]) {
-      return
+      return Promise.resolve(true)
     }
-    Promise.resolve()
+    return Promise.resolve()
       .then(() => sleep(delay))
       .then(() => s.setState({ [name]: true }))
       .then(() => promise)
@@ -226,14 +227,27 @@ const Component = React.createClass({
   togglePlayground () {
     const s = this
     let { state } = s
-    s.setState({ playground: !state.playground })
+    let playground = !state.playground
+    s.setState({ playground })
+    if (playground) {
+      s.tryAsync('reading', co(function * () {
+        const { fileAgent, state } = s
+        let html = yield fileAgent.read(`${state.content}.html`)
+        let script = yield fileAgent.read(`${state.content}.jsx`)
+        s.setState({
+          html: html || state.html,
+          script: script || state.script
+        })
+      }))
+    }
   },
 
   getMarkdownVars () {
     const s = this
     let { location } = window
     return {
-      __your_host__: location && location.host
+      __your_host__: location && location.host,
+      __your_spot_name__: '__your_spot_name__' // TODO
     }
   }
 })
