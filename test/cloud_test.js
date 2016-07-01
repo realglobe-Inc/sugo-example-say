@@ -35,7 +35,7 @@ describe('cloud', () => {
 
     {
       let { statusCode, body } = yield request({
-        url: `http://localhost:${port}/actions/compile`,
+        url: `http://localhost:${port}/dynamic/compile`,
         method: 'POST',
         json: true,
         body: {
