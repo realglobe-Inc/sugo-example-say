@@ -324,11 +324,11 @@ const Playground = React.createClass({
 })
 
 // Mount react component
-{
+setTimeout(() => {
   let mountRoot = document.getElementById('playground-root')
   mount(mountRoot, Playground, {
     spots: [].concat(window.spots || [])
   }).then(() => {
     console.debug('Playground mounted')
   }).catch((err) => console.error(err))
-}
+}, 500)
