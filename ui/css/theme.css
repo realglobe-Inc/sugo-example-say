@@ -850,9 +850,9 @@ td.ap-devtool-cell{ text-align:right;color:#CCC; }
 
 .ap-builder-editor-action-bar{ text-align:right;position:absolute;bottom:4px;left:4px;padding:0 4px;right:4px;background:rgba(240,240,240,0.9);border-top:1px solid #CCC;height:0;z-index:8;box-sizing:border-box;transition:height 400ms; }
 .ap-builder-editor-action-bar.ap-builder-editor-action-bar-open{ height:32px; }
-.ap-builder-editor-action-bar .ap-builder-editor-action-bar-toggle{ display:inline-block;position:absolute;right:0;z-index:4;padding:0 8px;box-sizing:border-box;line-height:24px;height:24px;bottom:100%;color:inherit; }
+.ap-builder-editor-action-bar .ap-builder-editor-action-bar-toggle{ display:inline-block;position:absolute;right:4px;z-index:4;padding:0 8px;box-sizing:border-box;line-height:24px;height:24px;bottom:100%;color:inherit; }
 .ap-builder-editor-action-bar .ap-builder-editor-action-bar-toggle:hover{ color:#666; }
-.ap-builder-editor-action-bar .ap-builder-editor-action-item{ font-size:11px;display:inline-block;padding:0 8px;margin:0;height:32px;line-height:32px;color:#555;cursor:pointer; }
+.ap-builder-editor-action-bar .ap-builder-editor-action-item{ font-size:11px;display:inline-block;padding:0 8px;margin:0 4px;height:32px;line-height:32px;color:#555;cursor:pointer; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-editor{ position:relative; }
