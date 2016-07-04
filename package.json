@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/realglobe-Inc/sugo-example-say#readme",
   "dependencies": {
-    "apeman-brws-react": "^2.1.1",
+    "apeman-brws-react": "^3.0.1",
     "apeman-brws-request": "^2.1.4",
     "apeman-react-basic": "^6.2.18",
     "apemancolor": "^1.2.2",
