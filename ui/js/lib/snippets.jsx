@@ -51,8 +51,7 @@ import {
 import co from 'co'
 import sugoTerminal from 'sugo-terminal'
 import sgHearing from 'sg-hearing'
-import {sleep} from 'apemansleep'
-import {EOL} from 'os'
+import asleep from 'asleep'
 
 /**
  * Dynamic component create from the online-editor
@@ -141,7 +140,7 @@ const Playground = React.createClass({
 
                       // Tear down
                       yield spot.disconnect()
-                      yield sleep(10)
+                      yield asleep(10)
                   }) }
                     spinning={ pingAt && !pongAt }
                     primary={ !pingAt }
