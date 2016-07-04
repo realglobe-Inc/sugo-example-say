@@ -34,7 +34,6 @@
     "apeman-brws-request": "^2.1.4",
     "apeman-react-basic": "^6.2.18",
     "apemancolor": "^1.2.2",
-    "apemanport": "^2.0.0",
     "babel-polyfill": "^6.9.1",
     "classnames": "^2.2.5",
     "co": "^4.6.0",
