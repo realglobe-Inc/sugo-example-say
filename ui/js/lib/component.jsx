@@ -26,7 +26,7 @@ import {
 } from 'sugo-react-example'
 import sgReactComponents from 'sg-react-components'
 import apemanReactBasic from 'apeman-react-basic'
-import apemansleep, {sleep} from 'apemansleep'
+import asleep from 'asleep'
 import co from 'co'
 import os from 'os'
 import sugoTerminal from 'sugo-terminal'
@@ -40,7 +40,7 @@ import markdowns from './markdowns'
 const RequirePool = {
   co,
   os,
-  apemansleep,
+  asleep,
   'sugo-terminal': sugoTerminal,
   'sugo-observer': sugoObserver,
   'sg-react': sgReact,
@@ -217,7 +217,7 @@ const Component = React.createClass({
       return Promise.resolve(true)
     }
     return Promise.resolve()
-      .then(() => sleep(delay))
+      .then(() => asleep(delay))
       .then(() => s.setState({ [name]: true }))
       .then(() => promise)
       .catch((err) => console.error(err))
