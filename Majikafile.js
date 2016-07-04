@@ -33,6 +33,7 @@ module.exports = {
       ['babel-preset-es2015']: '*'
     },
     preDeploy: [
+      'npm update',
       'npm shrinkwrap',
       'npm run prepublish',
       'curl -u`sugos-secrets get -r jfrog:deployer:username`:`sugos-secrets get -r jfrog:deployer:password` https://realglobe.artifactoryonline.com/realglobe/api/npm/auth > .npmrc',
