@@ -363,6 +363,6 @@ setTimeout(() => {
   }).then(() => {
     console.debug('Playground mounted')
   }).catch((err) => console.error(err))
-}, 500)
+}, 600)
 `
 
