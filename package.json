@@ -1,6 +1,6 @@
 {
   "name": "sugo-example-say",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "SUGOS example project to invoke `say` command on remote MAC",
   "main": "lib",
   "bin": "./bin/cli.js",
