@@ -66,16 +66,16 @@
     "ape-tmpl": "^5.0.11",
     "apeman-asset-javascripts": "^3.1.23",
     "apeman-react-icon": "^3.0.2",
-    "apemanfs": "^1.0.4",
     "apemanrequest": "^2.0.1",
     "aport": "^1.0.0",
+    "arequest": "^2.0.4",
     "asleep": "^1.0.3",
     "coz": "^6.0.3",
     "expandglob": "^3.0.2",
     "filedel": "^2.0.1",
     "injectmock": "^2.0.0",
-    "sugos-assets": "^1.1.5",
-    "sugos-ci": "^1.4.7"
+    "sugo-ci-example": "^1.0.0",
+    "sugos-assets": "^1.1.5"
   },
   "engines": {
     "node": ">=6.x",
