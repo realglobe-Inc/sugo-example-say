@@ -16,7 +16,7 @@ import {
   SgMicrophone
 } from 'sg-react-components'
 import co from 'co'
-import sugoTerminal from 'sugo-terminal'
+import sugoCaller from 'sugo-caller'
 import sgHearing from 'sg-hearing'
 import asleep from 'asleep'
 
@@ -31,10 +31,10 @@ const Playground = React.createClass({
 
   getInitialState () {
     const s = this
-    let { spots } = s.props
+    let { actors } = s.props
     return {
-      /** Key of spot to connect */
-      spotKey: spots.length > 0 ? spots[ 0 ].key : null,
+      /** Key of actor to connect */
+      actorKey: actors.length > 0 ? actors[ 0 ].key : null,
       /** Date ping send */
       pingAt: null,
       /** Date pong received */
@@ -64,22 +64,22 @@ const Playground = React.createClass({
   render () {
     const s = this
     let { state, props } = s
-    let { spots } = props
+    let { actors } = props
     let {
-      spotKey, pingAt, pongAt, voiceList, voice, recLang, recLangList,
+      actorKey, pingAt, pongAt, voiceList, voice, recLang, recLangList,
       sentences
     } = state
     return (
       <div className='dynamic-component'>
         <ApSelectableArticle
-          options={ (spots || []).reduce((options, spot) => Object.assign(options, {[spot.key]: spot.key}), {}) }
-          name='spotKey'
+          options={ (actors || []).reduce((options, actor) => Object.assign(options, {[actor.key]: actor.key}), {}) }
+          name='actorKey'
           label='Spot: '
-          alt='No spot found! You need to connect one before playing'
-          value={ spotKey }
-          onChange={ (e) => s.setState({ spotKey: e.target.value }) }
+          alt='No actor found! You need to connect one before playing'
+          value={ actorKey }
+          onChange={ (e) => s.setState({ actorKey: e.target.value }) }
         >
-          <ApSelectableArticle.Content contentFor={ String(spotKey) }>
+          <ApSelectableArticle.Content contentFor={ String(actorKey) }>
             <div className='playground-row'>
               <ApContainer>
                 <div className='playground-item'>
@@ -87,7 +87,7 @@ const Playground = React.createClass({
                 </div>
                 <div className='playground-item'>
                   <ApBigButton
-                    onTap={ () => s.withTerminal(function * sendPing (terminal) {
+                    onTap={ () => s.withCaller(function * sendPing (caller) {
                       if (s.state.pongAt) {
                         // Reset to send ping
                         s.setState({pingAt: null, pongAt: null})
@@ -95,8 +95,8 @@ const Playground = React.createClass({
                       }
 
                       // Set up
-                      let spot = yield terminal.connect(spotKey)
-                      let noop = spot.noop()
+                      let actor = yield caller.connect(actorKey)
+                      let noop = actor.noop()
 
                       // Do ping-pong
                       console.log('Send ping to noop...')
@@ -106,7 +106,7 @@ const Playground = React.createClass({
                       console.log(`...received ping from noop: "${pong}"`)
 
                       // Tear down
-                      yield spot.disconnect()
+                      yield actor.disconnect()
                       yield asleep(10)
                   }) }
                     spinning={ pingAt && !pongAt }
@@ -169,7 +169,7 @@ const Playground = React.createClass({
                 </div>
                 <div className='playground-item'>
                   <p>
-                    Invoke say command on the spot.
+                    Invoke say command on the actor.
                   </p>
                 </div>
               </ApContainer>
@@ -189,7 +189,7 @@ const Playground = React.createClass({
   componentDidMount () {
     const s = this
     let { protocol, host } = window.location
-    s.terminal = sugoTerminal(`${protocol}//${host}/terminals`)
+    s.caller = sugoCaller(`${protocol}//${host}/callers`)
 
     s.syncVoices()
 
@@ -199,27 +199,27 @@ const Playground = React.createClass({
   // custom
   // --------------------
 
-  withTerminal (handler) {
+  withCaller (handler) {
     const s = this
-    let { terminal } = s
-    if (!terminal) {
+    let { caller } = s
+    if (!caller) {
       return
     }
-    co(handler, terminal).catch((err) => console.error(err))
+    co(handler, caller).catch((err) => console.error(err))
   },
 
   syncVoices () {
     const s = this
-    return s.withTerminal(function * sync (terminal) {
-      yield sleep(10) // Wait for spot state
+    return s.withCaller(function * sync (caller) {
+      yield asleep(10) // Wait for actor state
       let { state } = s
-      let { spotKey } = state
-      if (!spotKey) {
+      let { actorKey } = state
+      if (!actorKey) {
         return
       }
 
-      let spot = yield terminal.connect(spotKey)
-      let say = spot.say()
+      let actor = yield caller.connect(actorKey)
+      let say = actor.say()
       console.log('Start sync voices...')
 
       let voiceList = yield say.voices()
@@ -230,7 +230,7 @@ const Playground = React.createClass({
       console.debug(`Detected voices: ${voiceList.join(',')}`)
 
       console.log('...voices sync done!')
-      yield spot.disconnect()
+      yield actor.disconnect()
     })
   },
 
@@ -307,17 +307,17 @@ const Playground = React.createClass({
     if (!text) {
       return
     }
-    return s.withTerminal(function * speech (terminal) {
+    return s.withCaller(function * speech (caller) {
       let { state } = s
-      let { spotKey, voice } = state
-      if (!spotKey) {
+      let { actorKey, voice } = state
+      if (!actorKey) {
         return
       }
-      let spot = yield terminal.connect(spotKey)
-      let say = spot.say()
+      let actor = yield caller.connect(actorKey)
+      let say = actor.say()
       console.log('Speech text: ', text)
       say.say(text, { voice })
-      yield spot.disconnect()
+      yield actor.disconnect()
     })
   }
 })
@@ -326,7 +326,7 @@ const Playground = React.createClass({
 setTimeout(() => {
   let mountRoot = document.getElementById('playground-root')
   mount(mountRoot, Playground, {
-    spots: [].concat(window.spots || [])
+    actors: [].concat(window.actors || [])
   }).then(() => {
     console.debug('Playground mounted')
   }).catch((err) => console.error(err))

@@ -1,36 +1,40 @@
 /**
- * Test case for spot.
+ * Test case for caller.
  * Runs with mocha.
  */
 'use strict'
 
-const spot = require('../lib/spot.js')
+const caller = require('../lib/caller.js')
+const actor = require('../lib/actor.js')
 const cloud = require('../lib/cloud.js')
 const assert = require('assert')
-const filedel = require('filedel')
 const co = require('co')
 const injectmock = require('injectmock')
 const aport = require('aport')
 const asleep = require('asleep')
 
-describe('spot', () => {
-  let storage = `${__dirname}/../tmp/testing-spot`
+describe('caller', () => {
   before(() => co(function * () {
     let port = yield aport()
+    let storage = `${__dirname}/../tmp/testing-caller`
     injectmock(process.env, 'STORAGE', storage)
+    injectmock(process.env, 'ACTOR_KEY', 'hoge')
     injectmock(process.env, 'PORT', port)
+    injectmock(process.env, 'INTERVAL', 120)
   }))
 
   after(() => co(function * () {
     injectmock.restoreAll()
-    yield filedel(`${storage}/**/*.*`)
   }))
 
-  it('Spot', () => co(function * () {
+  it('Caller', () => co(function * () {
     let cloudInstance = yield cloud()
-    let spotInstance = yield spot()
-    yield asleep(300)
-    yield spotInstance.disconnect()
+    let actorInstance = yield actor()
+    let callerInstance = yield caller()
+    yield asleep(500)
+    yield callerInstance.kill()
+    yield callerInstance.disconnect()
+    yield actorInstance.disconnect()
     yield cloudInstance.close()
   }))
 })

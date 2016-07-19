@@ -11,12 +11,7 @@ let restore = (text) => text.replace(/&#x60;/g, '`').replace(/&#x3D;/g, '=').rep
 /** Converted from "doc/guides/00.Requirements.md.hbs" */
 exports[ '00.Requirements' ] = restore(`Requirements
 -----
-&lt;a href&#x3D;&quot;http://www.apple.com/mac/&quot;&gt;
-  &lt;img src&#x3D;&quot;https://realglobe-inc.github.io/sugos-assets/images/mac-banner.svg&quot;
-       alt&#x3D;&quot;Mac&quot;
-       height&#x3D;&quot;&quot;
-       style&#x3D;&quot;height:px&quot;
-  /&gt;&lt;/a&gt;
+
 &lt;a href&#x3D;&quot;https://nodejs.org&quot;&gt;
   &lt;img src&#x3D;&quot;https://realglobe-inc.github.io/sugos-assets/images/nodejs-banner.png&quot;
        alt&#x3D;&quot;Node.js&quot;
@@ -30,16 +25,11 @@ exports[ '00.Requirements' ] = restore(`Requirements
        style&#x3D;&quot;height:px&quot;
   /&gt;&lt;/a&gt;
 
-+ [MAC ( OS X )][mac_url]
 + [Node.js ( &gt;&#x3D;6.x )][node_download_url]
 + [npm ( &gt;&#x3D;3.x )][npm_url]
 
-This example uses &#x60;say&#x60; command of OSX, thus you need a mac.
-
-[mac_url]: http://www.apple.com/mac/
 [node_download_url]: https://nodejs.org/en/download/
 [npm_url]: https://docs.npmjs.com/
-
 `)
 
 /** Converted from "doc/guides/01.Quick Start.md.hbs" */
@@ -67,7 +57,7 @@ Install the CLI
 $ npm install sugo-example-say -g
 &#x60;&#x60;&#x60;
 
-Then, start the server
+Then, run the server
 
 &#x60;&#x60;&#x60;bash
 $ PORT&#x3D;3000 sugo-example-say cloud
@@ -78,36 +68,39 @@ In the most of cases, you need to setup reverse-proxy (like [nginx][nginx_url]) 
 [nginx_url]: https://www.nginx.com/
 `)
 
-/** Converted from "doc/guides/12.Run Spot.md.hbs" */
-exports[ '12.Run Spot' ] = restore(`### Run Spot
+/** Converted from "doc/guides/12.Connect Actor.md.hbs" */
+exports[ '12.Connect Actor' ] = restore(`### Connect Actor
 
+Install the CLI
 
-Install the CLI to machine which the spot runs on. 
 
 &#x60;&#x60;&#x60;bash
 $ npm install sugo-example-say -g
 &#x60;&#x60;&#x60;
 
-Then, connect spot to the cloud
+Then, connect the actor to cloud
 
 &#x60;&#x60;&#x60;bash
-$ HOSTNAME&#x3D;&quot;__your_host__&quot; SPOT_KEY&#x3D;&quot;__your_spot_name__&quot; sugo-example-say spot
+$ HOSTNAME&#x3D;&quot;__your_host__&quot; ACTOR_KEY&#x3D;&quot;__your_actor_name__&quot; sugo-example-say actor
 &#x60;&#x60;&#x60;
 `)
 
-/** Converted from "doc/guides/13.Use Terminal.md.hbs" */
-exports[ '13.Use Terminal' ] = restore(`### Use Terminal
+/** Converted from "doc/guides/13.Connect Caller.md.hbs" */
+exports[ '13.Connect Caller' ] = restore(`### Connect Caller
 
 
-Install the CLI to machine which the use terminal.
+Install the CLI
 
 &#x60;&#x60;&#x60;bash
 $ npm install sugo-example-say -g
 &#x60;&#x60;&#x60;
 
-Then, run the example terminal
+Then, run the example caller
 
 &#x60;&#x60;&#x60;bash
-$ HOSTNAME&#x3D;&quot;__your_host__&quot; sugo-example-say terminal
-&#x60;&#x60;&#x60;`)
+$ HOSTNAME&#x3D;&quot;__your_host__&quot; sugo-example-say caller
+&#x60;&#x60;&#x60;
+
+Or, you can try it from UI pages on the cloud.
+`)
 
