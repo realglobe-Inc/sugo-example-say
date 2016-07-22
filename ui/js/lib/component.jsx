@@ -101,7 +101,7 @@ const Component = React.createClass({
         <SgExample>
           <SgExampleHeader { ...{ tab, pkg } }
             actors={ actors }
-            runSpot={ () => s.setState({ tooltip: markdowns[ '12.Run Spot' ] }) }
+            runActor={ () => s.setState({ tooltip: markdowns[ '12.Run Spot' ] }) }
             onTabChange={ (e) => s.setTab(e.tab) }/>
           <SgExampleBody hidden={ tab !== 'DEMO' }>
             <SgExampleAbout pkg={ pkg }/>
