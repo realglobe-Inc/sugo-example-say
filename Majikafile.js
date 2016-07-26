@@ -18,19 +18,14 @@ const common = {
 module.exports = {
   dockerRepositoryPrefix: 'realglobe-docker-vertual.jfrog.io/',
   dockerBuildArgs: {
-    additionalOptions: ['--force-rm=true'],
+    additionalOptions: [ '--force-rm=true' ],
     beforeInstall: common.beforeInstall,
     buildScript: common.buildScript
   },
   travisCreateArgs: {},
   heroku: {
     additionalDependencies: {
-      ['babel']: '*',
-      ['babel-cli']: '*',
-      ['node-sass']: '*',
-      ['browserify']: '*',
-      ['babel-preset-react']: '*',
-      ['babel-preset-es2015']: '*'
+      ['node-sass']: '*'
     },
     logo: 'http://realglobe-inc.github.io/sugo-demo-say/images/favicon.png',
     preDeploy: [
@@ -40,6 +35,7 @@ module.exports = {
       'echo "registry = https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-virtual" >> .npmrc'
     ],
     postDeploy: [
+      'rm -rf tmp',
       'npm update'
     ]
   }
