@@ -101,7 +101,7 @@ const Component = React.createClass({
         <SgExample>
           <SgExampleHeader { ...{ tab, pkg } }
             actors={ actors }
-            runActor={ () => s.setState({ tooltip: markdowns[ '12.Run Spot' ] }) }
+                           runActor={ () => s.setState({ tooltip: markdowns[ '12.Connect Actor' ] }) }
             onTabChange={ (e) => s.setTab(e.tab) }/>
           <SgExampleBody hidden={ tab !== 'DEMO' }>
             <SgExampleAbout pkg={ pkg }/>
@@ -124,7 +124,7 @@ const Component = React.createClass({
           <SgExampleBody hidden={ tab !== 'GUIDES' }>
             <SgExampleInstruction src={ [
               markdowns[ '11.Setup Cloud' ],
-              markdowns[ '12.Run Spot' ],
+              markdowns[ '12.Connect Actor' ],
               markdowns[ '13.Use Caller' ]
             ] } vars={ s.getMarkdownVars() }/>
             <SgExampleLinks links={ require('../../../doc/links.json') }/>
