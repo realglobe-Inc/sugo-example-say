@@ -71,6 +71,7 @@
     "aport": "^1.0.0",
     "arequest": "^2.0.5",
     "asleep": "^1.0.3",
+    "babel-polyfill": "^6.9.1",
     "coz": "^6.0.14",
     "filedel": "^2.0.2",
     "injectmock": "^2.0.0",

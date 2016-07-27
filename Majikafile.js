@@ -36,7 +36,8 @@ module.exports = {
     ],
     postDeploy: [
       'rm -rf tmp',
-      'npm update'
+      'npm update',
+      './ci/build.js'
     ]
   }
 }
