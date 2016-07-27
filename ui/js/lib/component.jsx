@@ -41,6 +41,7 @@ const RequirePool = {
   co,
   os,
   asleep,
+  'react': React,
   'sugo-caller': sugoCaller,
   'sugo-observer': sugoObserver,
   'sg-react': sgReact,
@@ -48,6 +49,7 @@ const RequirePool = {
   'sg-hearing': sgHearing,
   'apeman-react-basic': apemanReactBasic
 }
+const links = require('../../../doc/links.json')
 
 /** @lends Component */
 const Component = React.createClass({
@@ -65,6 +67,7 @@ const Component = React.createClass({
     /** Theme color */
     color: types.string
   },
+
   getInitialState () {
     const s = this
     let { props } = s
@@ -100,9 +103,9 @@ const Component = React.createClass({
       <div>
         <SgExample>
           <SgExampleHeader { ...{ tab, pkg } }
-            actors={ actors }
+                           actors={ actors }
                            runActor={ () => s.setState({ tooltip: markdowns[ '12.Connect Actor' ] }) }
-            onTabChange={ (e) => s.setTab(e.tab) }/>
+                           onTabChange={ (e) => s.setTab(e.tab) }/>
           <SgExampleBody hidden={ tab !== 'DEMO' }>
             <SgExampleAbout pkg={ pkg }/>
             <SgExampleStatus actors={ actors }
@@ -112,13 +115,16 @@ const Component = React.createClass({
                              onRefresh={ s.refreshStatus }
             />
             <SgExamplePlayground { ...{ html, script, globals } }
-              compile={ s.compileScript }
-              onChange={ s.handleChange }
-              pipeConsole={ true }
-              closed={ !state.playground }
-              onToggle={ s.togglePlayground }
-              defaultHtml={ DEFAULT_HTML }
-              defaultScript={ DEFAULT_SCRIPT }
+                                 compile={ s.compileScript }
+                                 onChange={ s.handleChange }
+                                 pkg={ pkg }
+                                 vars={ s.getMarkdownVars() }
+                                 pipeConsole={ true }
+                                 closed={ !state.playground }
+                                 links={ links }
+                                 onToggle={ s.togglePlayground }
+                                 defaultHtml={ DEFAULT_HTML }
+                                 defaultScript={ DEFAULT_SCRIPT }
             />
           </SgExampleBody>
           <SgExampleBody hidden={ tab !== 'GUIDES' }>
@@ -127,7 +133,7 @@ const Component = React.createClass({
               markdowns[ '12.Connect Actor' ],
               markdowns[ '13.Use Caller' ]
             ] } vars={ s.getMarkdownVars() }/>
-            <SgExampleLinks links={ require('../../../doc/links.json') }/>
+            <SgExampleLinks links={ links } />
           </SgExampleBody>
           <SgExampleFooter>
 
