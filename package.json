@@ -59,14 +59,14 @@
     "sugo-module-noop": "^4.0.1",
     "sugo-module-say": "^4.0.1",
     "sugo-observer": "^2.0.1",
-    "sugo-react-example": "^2.0.4"
+    "sugo-react-example": "^2.0.5"
   },
   "devDependencies": {
     "ababel": "^1.0.19",
     "ababel-es2015": "^1.0.2",
     "ababel-react": "^1.0.2",
     "ape-tmpl": "^5.0.14",
-    "apeman-asset-javascripts": "^4.0.0",
+    "apeman-asset-javascripts": "^4.0.1",
     "apeman-react-icon": "^3.0.7",
     "aport": "^1.0.0",
     "arequest": "^2.0.5",
