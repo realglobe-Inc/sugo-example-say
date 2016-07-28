@@ -3,7 +3,7 @@
  */
 'use strict'
 
-require('babel-polyfill')
+import 'babel-polyfill'
 
 import React, {PropTypes as types} from 'react'
 import {mount} from 'sg-react'
