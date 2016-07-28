@@ -75,6 +75,7 @@
     "coz": "^6.0.14",
     "filedel": "^2.0.2",
     "injectmock": "^2.0.0",
+    "sg-travis": "^1.1.25",
     "sugo-ci-example": "^3.0.0",
     "sugos-assets": "^2.0.1"
   },

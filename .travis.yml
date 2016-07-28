@@ -15,3 +15,10 @@ script:
 - ./ci/test.js
 - ./ci/cover.js
 - ./ci/report.js
+after_success:
+- ./ci/travis/publish.js
+- ./ci/travis/push_scaffold.js
+- ./ci/travis/push_sugos_index.js
+- ./ci/heroku.js
+env:
+  secure: "1JF518QOyPuYBAcSrZHyL46wnFypzKcfvCGzyXj7o+frIB7jcBzrFeXtMMTDSYWuCyCrr2okrA1kS10QjpGZyOkGLBxmccv/RKsnnmrXGob9Y6g51o+RXV0V/PhHIxjp1yYN8kvGUXiLbOh7g9mcj8qzHinKHTejgzyU9LkM80scQv5+SttJo25CTXrVNbkmLymUFwPzF72BIiWv2YtAxxFhCnkFCCbsN02MmG7ZaETWI11TCVWFQsSVgrLj/UkGyjddmVBAU3IbqvuVDv4tXniFbVeilrfCN9QEdpe6+UDJy/LbfOFQtNoJENxSfhimALkKDvgskm+J5o+6Q3ruBtBGDN78Rm9ipE68v1qpIGA+IFG2cWApS2xEPd8t/eb5Xq7qp03MBfAbBVnvE3nZ1wnwqQRksxW48WhEygQ+Fr3eDGzW75cwiGsYI7fAbjvjF33HRINwfg41P3G4kS7flPPGs3Ybl/Bqwgg2Iid3kZp2kB1H5CQbwSugY23dpp9NUxiCH95d5y4MCrtQfCTpCpb5TK7gSVaQBj8mU+rcSkKIrMqFmPEjzfYE8PwkGG9JPSSAzSrpW9U2uz9QRBbdJ2FTNjHTJ6Km2OQ0nmJHbpfQYklNUPhRKtWVkhvkKql4tDH9HXEaTiDQ/S1M0YTRcdsrCF52u2D4yM0nRZnn1Wg="
