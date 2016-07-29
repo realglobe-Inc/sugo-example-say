@@ -19,6 +19,7 @@ exports.DEFAULT_HTML = `<!--
   <link rel="stylesheet" href="css/say.css">
   <link rel="stylesheet" href="css/font-awesome.css"/>
   <link rel="stylesheet" href="css/ionicons.css"/>
+  <script src="js/polyfill.js"></script>
   <script src="js/external.cc.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
