@@ -32,7 +32,7 @@
   "dependencies": {
     "aglob": "^1.0.1",
     "apeman-react-basic": "^9.0.1",
-    "apeman-react-icon": "^3.0.7",
+    "apeman-react-icon": "^4.0.0",
     "apemancolor": "^1.2.2",
     "babel-polyfill": "^6.9.1",
     "classnames": "^2.2.5",
