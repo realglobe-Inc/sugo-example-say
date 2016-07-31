@@ -161,7 +161,7 @@ const Playground = React.createClass({
                     </ApForm>
                   </div>
                   <div>
-                    <h5 className="say-form-legend"> By Text</h5>
+                    <h5 className="say-form-legend">By Text</h5>
                     <ApForm className='say-text-form'>
                       <ApText name='text'
                               rows={ 2 }
