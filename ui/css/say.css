@@ -1,0 +1,36 @@
+.say-text-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0; }
+
+.say-text-form .ap-text-wrap {
+  margin: 0; }
+
+.say-text-form .ap-text {
+  border-radius: 8px 0 0 8px;
+  resize: none; }
+
+.say-text-form .ap-button {
+  margin: 0;
+  padding: 5px 8px;
+  border-radius: 0 8px 8px 0; }
+
+.say-voice-form .ap-select-options-list-inner {
+  max-height: 180px !important; }
+
+.say-form-legend {
+  display: block;
+  font-size: 14px;
+  border-bottom: 1px solid #F0F0F0;
+  margin-top: 24px;
+  color: #888; }
+
+.say-speech-form {
+  display: flex;
+  align-items: center; }
+
+.say-speech-form .ap-select-label {
+  min-width: 0; }
+
+/*# sourceMappingURL=say.css.map */
