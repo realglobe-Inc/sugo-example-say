@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/realglobe-Inc/sugo-example-say#readme",
   "dependencies": {
-    "aglob": "^1.0.1",
+    "aglob": "^1.0.2",
     "apeman-react-basic": "^9.0.8",
     "apeman-react-icon": "^4.0.1",
     "apemancolor": "^1.2.2",
@@ -59,7 +59,9 @@
     "sugo-module-noop": "^4.0.3",
     "sugo-module-say": "^4.0.3",
     "sugo-observer": "^2.0.3",
-    "sugo-react-example": "^2.0.11",
+    "sugo-react-example": "^2.0.11"
+  },
+  "devDependencies": {
     "ababel": "^1.0.25",
     "ababel-es2015": "^1.0.5",
     "ababel-react": "^1.0.5",

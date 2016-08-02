@@ -1,8 +1,0 @@
-{
-  "name": "sugo-example-say",
-  "description": "SUGOSSUGOS example project to invoke `say` command on remote MAC (OSX system is required)",
-  "logo": "http://realglobe-inc.github.io/sugo-demo-say/images/favicon.png",
-  "scripts": {
-    "postdeploy": "rm -rf tmp && rm -rf ui/js/lib/*.js && npm update && ./ci/build.js"
-  }
-}
