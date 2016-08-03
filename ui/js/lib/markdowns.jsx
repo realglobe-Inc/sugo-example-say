@@ -49,10 +49,10 @@ exports[ '10.How to' ] = restore(`How to
 -------`)
 
 /** Converted from "doc/guides/11.Setup Cloud.md.hbs" */
-exports[ '11.Setup Cloud' ] = restore(`### Setup Cloud
+exports[ '11.Setup Cloud' ] = restore(`### Setup Hub
 
-Setup a cloud server to provide UI pages and actor/connector API.
-This component is build with [SUGO-Cloud][sugo_cloud_url] package.
+Setup a hub server to provide UI pages and actor/connector API.
+This component is build with [SUGO-Hub][sugo_hub_url] package.
 
 
 Install the CLI:
@@ -64,7 +64,7 @@ $ npm install sugo-example-say -g
 Then, run the server
 
 &#x60;&#x60;&#x60;bash
-$ PORT&#x3D;3000 sugo-example-say cloud
+$ PORT&#x3D;3000 sugo-example-say hub
 &#x60;&#x60;&#x60;
 
 In the most of cases, you need to setup reverse-proxy (like [nginx][nginx_url]) to exports the server to the outer world.
@@ -84,7 +84,7 @@ Install the CLI:
 $ npm install sugo-example-say -g
 &#x60;&#x60;&#x60;
 
-Then, connect the actor to the cloud
+Then, connect the actor to the hub
 
 &#x60;&#x60;&#x60;bash
 $ HOSTNAME&#x3D;&quot;__your_host__&quot; ACTOR_KEY&#x3D;&quot;__your_actor_name__&quot; sugo-example-say actor
@@ -110,6 +110,6 @@ Then, run the example caller
 $ HOSTNAME&#x3D;&quot;__your_host__&quot; sugo-example-say caller
 &#x60;&#x60;&#x60;
 
-Or, you can try it from UI pages on the cloud.
+Or, you can try it from UI pages on the hub.
 `)
 

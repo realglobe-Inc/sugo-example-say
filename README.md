@@ -117,10 +117,10 @@ How to
 
 <a name="section-doc-guides-11-setup-cloud-md"></a>
 
-### Setup Cloud
+### Setup Hub
 
-Setup a cloud server to provide UI pages and actor/connector API.
-This component is build with [SUGO-Cloud][sugo_cloud_url] package.
+Setup a hub server to provide UI pages and actor/connector API.
+This component is build with [SUGO-Hub][sugo_hub_url] package.
 
 
 Install the CLI:
@@ -132,7 +132,7 @@ $ npm install sugo-example-say -g
 Then, run the server
 
 ```bash
-$ PORT=3000 sugo-example-say cloud
+$ PORT=3000 sugo-example-say hub
 ```
 
 In the most of cases, you need to setup reverse-proxy (like [nginx][nginx_url]) to exports the server to the outer world.
@@ -157,7 +157,7 @@ Install the CLI:
 $ npm install sugo-example-say -g
 ```
 
-Then, connect the actor to the cloud
+Then, connect the actor to the hub
 
 ```bash
 $ HOSTNAME="__your_host__" ACTOR_KEY="__your_actor_name__" sugo-example-say actor
@@ -188,7 +188,7 @@ Then, run the example caller
 $ HOSTNAME="__your_host__" sugo-example-say caller
 ```
 
-Or, you can try it from UI pages on the cloud.
+Or, you can try it from UI pages on the hub.
 
 
 <!-- Section from "doc/guides/13.Connect Caller.md.hbs" End -->
@@ -214,12 +214,12 @@ Links
 ------
 
 + [sugos][sugos_url]
-+ [sugo-cloud][sugo_cloud_url]
++ [sugo-hub][sugo_hub_url]
 + [sugo-caller][sugo_caller_url]
 + [sugo-actor][sugo_actor_url]
 
 [sugos_url]: https://github.com/realglobe-Inc/sugos
-[sugo_cloud_url]: https://github.com/realglobe-Inc/sugo-cloud
+[sugo_hub_url]: https://github.com/realglobe-Inc/sugo-hub
 [sugo_caller_url]: https://github.com/realglobe-Inc/sugo-caller
 [sugo_actor_url]: https://github.com/realglobe-Inc/sugo-actor
 
