@@ -1074,25 +1074,8 @@ div.CodeMirror-dragcursors {
 
 
 
-.ap-console{ background-color:#FFF;font-size:11px;display:block;padding:8px;width:100%;border:1px solid #EEE;overflow-y:hidden;box-sizing:border-box;position:relative; }
-.ap-console-control{ position:absolute;top:0;right:0;left:0;padding:1px 4px 0;background:rgba(228, 228, 228, 0.95);color:#888;border-bottom:1px solid rgba(228, 228, 228, 1);box-shadow:1px 1px 2px rgba(0,0,0,0.2);box-sizing:border-box;line-height:24px;height:24px;text-align:right;z-index:4; }
-.ap-console .ap-console-button{ display:inline-block;padding:0 4px;line-height:24px;margin:0;background:transparent;box-sizing:border-box;cursor:pointer;color:inherit; }
-.ap-console .ap-console-button-left{ float:left; }
-.ap-console .ap-console-button-hidden{ display:none !important; }
-.ap-console .ap-console-button:hover{ opacity:0.9; }
-.ap-console .ap-console-button:active{ opacity:0.75; }
-.ap-console .ap-console-button .ap-icon-button-icon{ line-height:24px; }
-.ap-console-content{ padding:24px 0 12px;box-sizing:border-box; }
-.ap-console .ap-console-button.ap-button-disabled, .ap-console .ap-console-button.ap-button-disabled:hover, .ap-console .ap-console-button.ap-button-disabled:active{ opacity:0.3;cursor:default; }
-.ap-console-line-error{ }
-.ap-console-line-warn{ }
-.ap-console-line-info{ }
-.ap-console-line-notice{ color:rgba(169, 50, 90, 1); }
-.ap-console-line-trace{ }
-.ap-console-control-alt{ opacity:0.2;text-align:center;font-size:large;display:block;margin:2em 0; }
-@media (min-width: 768px) {  }
-@media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }
+.ap-profile{ }
+.ap-profile-lead-form-message{ font-size:1em;color:#AAA;padding:32px 16px; }
 .ap-links{ }
 .ap-links-item{ }
 .ap-links-item a{ display:inline-block;padding:2px 8px; }
