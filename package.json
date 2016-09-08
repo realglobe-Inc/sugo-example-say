@@ -5,14 +5,14 @@
   "main": "lib",
   "bin": "./bin/cli.js",
   "scripts": {
-    "test": "./ci/test.js",
-    "prepublish": "./ci/build.js",
-    "start": "./bin/hub.js",
-    "hub": "./bin/hub.js",
-    "actor": "./bin/actor.js",
-    "caller": "./bin/caller.js",
-    "ui": "./bin/ui.js",
-    "debug": "./ci/watch.js & DEBUG=sg:* ./bin/hub.js"
+    "test": "node ./ci/test.js",
+    "prepublish": "node ./ci/build.js",
+    "start": "node ./bin/hub.js",
+    "hub": "node ./bin/hub.js",
+    "actor": "node ./bin/actor.js",
+    "caller": "node ./bin/caller.js",
+    "ui": "node ./bin/ui.js",
+    "debug": "node ./ci/watch.js & DEBUG=sg:* node ./bin/hub.js"
   },
   "repository": "realglobe-Inc/sugo-example-say",
   "keywords": [
@@ -31,7 +31,7 @@
   "homepage": "https://github.com/realglobe-Inc/sugo-example-say#readme",
   "dependencies": {
     "aglob": "^1.0.2",
-    "apeman-react-basic": "^9.0.13",
+    "apeman-react-basic": "^10.2.4",
     "apeman-react-icon": "^4.0.1",
     "apemancolor": "^1.2.3",
     "babel-polyfill": "^6.13.0",
@@ -48,18 +48,18 @@
     "react-dom": "^15.3.0",
     "sg-hearing": "^1.0.0",
     "sg-react": "^1.0.11",
-    "sg-react-components": "^1.3.9",
-    "sugo-actor": "^4.1.6",
+    "sg-react-components": "^2.0.0",
+    "sugo-actor": "^4.4.4",
     "sugo-agent-compile": "^1.0.13",
     "sugo-agent-file": "^1.0.10",
-    "sugo-caller": "^2.1.11",
+    "sugo-caller": "^3.0.3",
     "sugo-endpoint-compile": "^2.0.7",
     "sugo-endpoint-file": "^1.0.3",
-    "sugo-hub": "^3.0.8",
+    "sugo-hub": "^4.0.3",
     "sugo-module-noop": "^4.0.3",
     "sugo-module-say": "^4.0.3",
     "sugo-observer": "^2.0.4",
-    "sugo-react-example": "^2.0.14"
+    "sugo-react-example": "^2.0.15"
   },
   "devDependencies": {
     "ababel": "^1.0.25",

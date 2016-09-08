@@ -6,7 +6,7 @@
 
 import 'babel-polyfill'
 
-import React, {PropTypes as types} from 'react'
+import React, { PropTypes as types } from 'react'
 
 import hubAgent from 'sugo-hub/agent'
 import fileAgent from 'sugo-agent-file'
@@ -34,7 +34,7 @@ import sgReact from 'sg-react'
 import sgHearing from 'sg-hearing'
 import sugoObserver from 'sugo-observer'
 
-import {DEFAULT_SCRIPT, DEFAULT_HTML} from './snippets'
+import { DEFAULT_SCRIPT, DEFAULT_HTML } from './snippets'
 import markdowns from './markdowns'
 
 const RequirePool = {
@@ -133,7 +133,7 @@ const Component = React.createClass({
               markdowns[ '12.Connect Actor' ],
               markdowns[ '13.Use Caller' ]
             ] } vars={ s.getMarkdownVars() }/>
-            <SgExampleLinks links={ links } />
+            <SgExampleLinks links={ links }/>
           </SgExampleBody>
           <SgExampleFooter>
 

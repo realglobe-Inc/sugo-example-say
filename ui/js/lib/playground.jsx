@@ -3,8 +3,8 @@
  */
 'use strict'
 
-import React, {PropTypes as types} from 'react'
-import {mount} from 'sg-react'
+import React, { PropTypes as types } from 'react'
+import { mount } from 'sg-react'
 import {
   ApContainer,
   ApBigButton, ApSelect, ApButton, ApText, ApSelectableArticle,
@@ -70,9 +70,9 @@ const Playground = React.createClass({
     return (
       <div className='dynamic-component'>
         <ApSelectableArticle
-          options={ (actors || []).reduce((options, actor) => Object.assign(options, {[actor.key]: actor.key}), {}) }
+          options={ (actors || []).reduce((options, actor) => Object.assign(options, { [actor.key]: actor.key }), {}) }
           name='actorKey'
-          label='Spot: '
+          label='Actor: '
           alt='No actor found! You need to connect one before playing'
           value={ actorKey }
           onChange={ (e) => s.setState({ actorKey: e.target.value }) }
@@ -88,19 +88,19 @@ const Playground = React.createClass({
                     onTap={ () => s.withCaller(function * sendPing (caller) {
                       if (s.state.pongAt) {
                         // Reset to send ping
-                        s.setState({pingAt: null, pongAt: null})
+                        s.setState({ pingAt: null, pongAt: null })
                         return
                       }
 
                       // Set up
                       let actor = yield caller.connect(actorKey)
-                      let noop = actor.noop()
+                      let noop = actor.get('noop')
 
                       // Do ping-pong
                       console.log('Send ping to noop...')
-                      s.setState({pingAt: new Date().toLocaleTimeString()})
+                      s.setState({ pingAt: new Date().toLocaleTimeString() })
                       let pong = yield noop.ping()
-                      s.setState({pongAt: new Date().toLocaleTimeString()})
+                      s.setState({ pongAt: new Date().toLocaleTimeString() })
                       console.log(`...received ping from noop: "${pong}"`)
 
                       // Tear down
@@ -117,9 +117,9 @@ const Playground = React.createClass({
               <ApContainer>
                 <div className='playground-item'>
                   <div>
-                    <ApForm className='say-voice-form'>
+                    <ApForm className='say-voice-form' id='say-voice-form'>
                       <ApSelect value={ voice }
-                                options={ (voiceList || []).reduce((options, voice) => Object.assign(options, {[voice]: voice}), {}) }
+                                options={ (voiceList || []).reduce((options, voice) => Object.assign(options, { [voice]: voice }), {}) }
                                 onChange={ (e) => s.setState({ voice: e.target.value }) }
                                 name='voice'
                                 placehodler='Value of voice'
@@ -128,7 +128,7 @@ const Playground = React.createClass({
                   </div>
                   <div>
                     <h5 className="say-form-legend">By Text</h5>
-                    <ApForm className='say-text-form'>
+                    <ApForm className='say-text-form' id='say-text-form'>
                       <ApText name='text'
                               rows={ 2 }
                               placehodler='Text to speech'
@@ -142,9 +142,9 @@ const Playground = React.createClass({
                       > Send </ApButton>
                     </ApForm>
                     <h5 className="say-form-legend"> By speech</h5>
-                    <ApForm className='say-speech-form'>
+                    <ApForm className='say-speech-form' id='say-speech-form'>
                       <ApSelect value={ recLang }
-                                options={ (recLangList || []).reduce((options, voice) => Object.assign(options, {[voice]: voice}), {}) }
+                                options={ (recLangList || []).reduce((options, voice) => Object.assign(options, { [voice]: voice }), {}) }
                                 onChange={ (e) => s.setState({ recLang: e.target.value }) }
                                 name='recLang'
                                 placehodler='Lang to recognize'
@@ -217,7 +217,7 @@ const Playground = React.createClass({
       }
 
       let actor = yield caller.connect(actorKey)
-      let say = actor.say()
+      let say = actor.get('say')
       console.log('Start sync voices...')
 
       let voiceList = yield say.voices()
@@ -312,7 +312,7 @@ const Playground = React.createClass({
         return
       }
       let actor = yield caller.connect(actorKey)
-      let say = actor.say()
+      let say = actor.get('say')
       console.log('Speech text: ', text)
       say.say(text, { voice })
       yield actor.disconnect()
